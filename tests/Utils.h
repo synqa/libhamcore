@@ -17,6 +17,8 @@ typedef enum FILESIZE_MODE
 	MIXED
 } FILESIZE_MODE;
 
+void InitTest();
+
 bool FilesizeModeFromStr(const char *str, FILESIZE_MODE *mode);
 
 RANDOM_FILE **CreateRandomFiles(FILESIZE_MODE mode, size_t num_files);

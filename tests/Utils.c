@@ -5,6 +5,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef _WIN32
+#include <crtdbg.h>
+#endif
+
+void InitTest()
+{
+	#ifdef _WIN32
+	_CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
+	_set_error_mode(_OUT_TO_STDERR);
+	#endif
+}
+
 bool FilesizeModeFromStr(const char *str, FILESIZE_MODE *mode)
 {
 	if (!str)

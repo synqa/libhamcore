@@ -119,6 +119,8 @@ CLEANUP:
 
 int main(int argc, char **argv)
 {
+	InitTest();
+
 	TEST_PARAMS parameters = {0};
 	if (!ParseArguments(argc, argv, &parameters))
 	{
