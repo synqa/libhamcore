@@ -5,7 +5,7 @@ target_sources(TestModule
     Utils.c
 )
 target_include_directories(TestModule PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
-target_link_libraries(TestModule PUBLIC libhamcore)
+target_link_libraries(TestModule PUBLIC libhamcore ZLIB::ZLIB)
 
 add_executable(TestEncodeDecode)
 target_sources(TestEncodeDecode PRIVATE TestEncodeDecode.c)
