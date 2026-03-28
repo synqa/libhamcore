@@ -261,7 +261,7 @@ bool HamcoreBuild(const char *dst_path, const char *base_path, const char **src_
 		}
 
 		file->Size = buffer_size;
-		ret = compress(buffer, (uLongf *)&file->Size, content, (uLong)file->OriginalSize);
+		ret = compress(buffer, &file->Size, content, (uLong)file->OriginalSize);
 		free(content);
 
 		if (ret != Z_OK)
