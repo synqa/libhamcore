@@ -188,8 +188,8 @@ bool HamcoreRead(HAMCORE *hamcore, void *dst, const HAMCORE_FILE *hamcore_file)
 		goto FINAL;
 	}
 
-	uLong dst_size = (uLong)hamcore_file->OriginalSize;
-	if (uncompress(dst, &dst_size, buf, (uLong)hamcore_file->Size) != Z_OK)
+	size_t dst_size = hamcore_file->OriginalSize;
+	if (uncompress(dst, &dst_size, buf, hamcore_file->Size) != Z_OK)
 	{
 		goto FINAL;
 	}
@@ -261,7 +261,7 @@ bool HamcoreBuild(const char *dst_path, const char *base_path, const char **src_
 		}
 
 		file->Size = buffer_size;
-		ret = compress(buffer, &file->Size, content, (uLong)file->OriginalSize);
+		ret = compress(buffer, &file->Size, content, file->OriginalSize);
 		free(content);
 
 		if (ret != Z_OK)
